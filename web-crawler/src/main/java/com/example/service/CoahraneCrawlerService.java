@@ -24,7 +24,7 @@ public class CoahraneCrawlerService {
 	final String baseurl = "https://www.cochranelibrary.com/cdsr/reviews/topics";
 	final String outputfile = "C:/Users/shiva/eclipse-workspace/Web-Crawler/cochrane_reviews.txt";
 
-	public void ReadReviewsurl(String baseurl) {
+	public void ReadReviewsurl() {
 		// List the review urls from the coachrane library
 		List<String> reviewurls = getreviewUrls();
 		// Hold the reviews objects
