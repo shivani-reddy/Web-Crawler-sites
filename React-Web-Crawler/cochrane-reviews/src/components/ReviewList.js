@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import ReviewItem from "./Reviewitem";
-import axios from "axios";
+// import ReviewItem from "./Reviewitem";
+// import axios from "axios";
 import { FixedSizeList as List } from "react-window";
 //import { VariableSizeList as List } from "react-window";
 import "../App.css";
@@ -22,7 +22,7 @@ function ReviewList({ selectedTopic }) {
         const flatData = [];
         const topics = [];
         console.log("SelectedTopic ", selectedTopic);
-        if (!selectedTopic) {
+        if ((selectedTopic == "" || selectedTopic == undefined)) {
           data.forEach((element) => {
             //console.log(element[0].topic);
 
@@ -97,7 +97,7 @@ function ReviewList({ selectedTopic }) {
         </a>
         <p>Topic:{item.topic}</p>
         <p>Author:{item.author}</p>
-        <p style={{ color: "#962d91" }}>Date: {item.date}</p>
+        <p className="date">Date: {item.date}</p>
       </div>
     );
   };

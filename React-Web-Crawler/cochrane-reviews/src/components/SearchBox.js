@@ -24,29 +24,37 @@ const SearchBox = ({ searchedTopic }) => {
         .catch((error) => console.error("Error fetching topics:", error));
     }, []);
 
-  useEffect(() => {
-    if (query.length > 3) {
-      setIsLoading(true);
-      try {
-        const filteredResults = topic.filter((element) =>
-          element.includes(query)
-        );
-        setSuggestions(filteredResults);
-        setIsLoading(false);
-        setShowSuggestions(true);
-      } catch (error) {
-        console.error("Error fetching suggestions:", error);
-        setIsLoading(false);
+    useEffect(() => {
+      //Write a if class check if the event is empty then get back to the same function
+      if (query === "") {
+        setSuggestions([]);
+        setShowSuggestions(false);
+        searchedTopic(""); //Empty search box reloads back and gets all the reviews
+        return;
       }
-    } else {
-      setSuggestions([]);
-      setShowSuggestions(false);
-    }
-  }, [query]);
+      if (query.length > 3) {
+        setIsLoading(true);
+        try {
+          const filteredResults = topic.filter((element) =>
+            element.includes(query)
+          );
+          setSuggestions(filteredResults);
+          setIsLoading(false);
+          setShowSuggestions(true);
+        } catch (error) {
+          console.error("Error fetching suggestions:", error);
+          setIsLoading(false);
+        }
+      } else {
+        setSuggestions([]);
+        setShowSuggestions(false);
+      }
+    }, [query,topic]);
 
-  const handleInputChange = (event) => {
-    setQuery(event.target.value.toLowerCase());
-  };
+    const handleInputChange = (event) => {;
+        setQuery(event.target.value.toLowerCase());
+    }
+
 
     const handleSuggestionClick = (suggestion) => {
       console.log("Suggestion clicked:", suggestion); //suggestion print
