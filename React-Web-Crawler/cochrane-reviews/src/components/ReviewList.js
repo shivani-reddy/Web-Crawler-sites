@@ -13,7 +13,8 @@ function ReviewList({ selectedTopic }) {
   const loader = useRef(null);
 
   //Makes the JSON to flat JSON
-  useEffect(() => {
+    useEffect(() => {
+      console.log("Fetching data in ReviewList:", selectedTopic);//selected topic in reviewlist
     fetch("cochrane_reviews.json")
       .then((response) => response.json())
       .then((data) => {
@@ -21,9 +22,9 @@ function ReviewList({ selectedTopic }) {
         const flatData = [];
         const topics = [];
         console.log("SelectedTopic ", selectedTopic);
-        if (selectedTopic == "" || selectedTopic == undefined) {
+        if (!selectedTopic) {
           data.forEach((element) => {
-            // console.log(element[0].topic);
+            //console.log(element[0].topic);
 
             element.forEach((singleElement) => {
               flatData.push(singleElement);
@@ -31,7 +32,7 @@ function ReviewList({ selectedTopic }) {
           });
         } else {
           data.forEach((element) => {
-            if (selectedTopic == element[0].topic) {
+            if (selectedTopic.toLowerCase() === element[0].topic.toLowerCase()) {
               element.forEach((singleElement) => {
                 flatData.push(singleElement);
               });
@@ -45,7 +46,7 @@ function ReviewList({ selectedTopic }) {
         setCurrentIndex(batchSize);
       })
       .catch((error) => console.error("Error fetching data:", error));
-  }, []);
+  }, [selectedTopic]);
 
   //   useEffect(() => {
   //     const options = {

@@ -8,16 +8,14 @@ function MainPage() {
   
 const [topicChanged, setTopicChanged] = useState("");
   useEffect(() => {
-    console.log("VVVVVV ",topicChanged)
+    console.log("Topic changes: ",topicChanged)
 }, [topicChanged]);
   
 
-  function topicHandler(e) {
-    console.log("this is topic", e);
-    console.log("The topic is ", topicChanged);
-    setTopicChanged(e);
-    console.log("The topic is now ", topicChanged);
-  }
+   const topicHandler = (topic) => {
+     console.log("Setting selected topic:", topic); // Debugging line
+     setTopicChanged(topic);
+   };
 
   return (
     <div className="App">

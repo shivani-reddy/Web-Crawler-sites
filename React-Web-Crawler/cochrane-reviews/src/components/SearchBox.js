@@ -9,18 +9,20 @@ const SearchBox = ({ searchedTopic }) => {
   const [selectedTopic, setSelectedTopic] = useState();
   const suggestionsRef = useRef();
 
-  useEffect(() => {
-    fetch("cochrane_reviews.json")
-      .then((response) => response.json())
-      .then((data) => {
-        const topics = [];
-        data.forEach((element) => {
-          topics.push(element[0].topic.toLowerCase());
-        });
-        setTopic(topics);
-      })
-      .catch((error) => console.error("Error fetching topics:", error));
-  }, []);
+    useEffect(() => {
+      console.log("Selected topic:", selectedTopic); // Line should show the selected Topic
+      fetch("cochrane_reviews.json")
+        .then((response) => response.json())
+        .then((data) => {
+          const topics = [];
+          data.forEach((element) => {
+            topics.push(element[0].topic.toLowerCase());
+          });
+            setTopic(topics);
+            console.log("Fetched topics:", topics); //fetched topics
+        })
+        .catch((error) => console.error("Error fetching topics:", error));
+    }, []);
 
   useEffect(() => {
     if (query.length > 3) {
@@ -46,13 +48,15 @@ const SearchBox = ({ searchedTopic }) => {
     setQuery(event.target.value.toLowerCase());
   };
 
-  const handleSuggestionClick = (suggestion) => {
-    //   searchedTopic = suggestion;
-      searchedTopic(suggestion)
-    setQuery(suggestion);
-    setSuggestions([]);
-    setShowSuggestions(false);
-  };
+    const handleSuggestionClick = (suggestion) => {
+      console.log("Suggestion clicked:", suggestion); //suggestion print
+      searchedTopic(suggestion);
+      //setSelectedTopic(suggestion);
+      console.log("searchedTopic:", searchedTopic); //suggestion print
+      setQuery(suggestion);
+      setSuggestions([]);
+      setShowSuggestions(false);
+    };
 
   const handleClickOutside = (event) => {
     if (
