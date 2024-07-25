@@ -2,7 +2,9 @@ package com.example.service;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
+/**
+ * Represents a review entity with its relevant details.
+ */
 @Data
 @AllArgsConstructor
 public class Review {
@@ -11,7 +13,8 @@ public class Review {
     private String title; // Title of the review
     private String authors; // Authors of the review
     private String date; // Publication date of the review
-
+    
+    //Geters and setters not required for the functionality so didnt add them
 	public Review(String reviewUrl, String topic2, String reviewTitle, String reviewAuthors, String reviewDate) {
 		// TODO Auto-generated constructor stub
 		this.url=reviewUrl;
@@ -25,6 +28,6 @@ public class Review {
 	// Override the toString method to return a pipe-delimited string representation of the review
     @Override
     public String toString() {
-        return String.join("|", url, topic, title, authors, date);
+    	return url + "|" + topic + "|" + title + "|" + authors + "|" + date;
     }
 }

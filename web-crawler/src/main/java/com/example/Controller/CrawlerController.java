@@ -18,34 +18,33 @@ import com.example.service.Review;
 /**
  * 
  */
+//Controller for handling the review serach requests
 @RestController
 public class CrawlerController {
 	    @Autowired
 	    private CoahraneCrawlerService cochraneCrawlerService;
 
-//	    @GetMapping("/crawl")
-//	    public String crawlReviews() {
-//	        cochraneCrawlerService.ReadReviewsurl();
-//	        return "Crawling started. Check the log for updates.";
-//	    }
+        //End point to get all the topics
 	    @GetMapping("/topics")
 	    public List<String> getTopics() {
 	        return cochraneCrawlerService.getTopics();
 	        
 	    }
-	    
-
-	    // Endpoint to search reviews by topic
+	    /**
+	     * Searches for reviews based on the provided topic.
+	     *
+	     * @param topic the topic to search reviews for
+	     * @return a list of reviews matching the topic
+	     */
+	    //If there is a special character like & you have to give it as %26 which needs to be fixed in further sometimes the url isnt adding and it needs to be fixed.
 	    @GetMapping("/search")
 	    public String searchReviews(@RequestParam String topic) {
-//	    	String encodedTopic=null;
-//			try {
-//				encodedTopic = URLEncoder.encode(topic, "UTF-8");
-//			} catch (UnsupportedEncodingException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
 	        cochraneCrawlerService.readReviewByTopic(topic);
 	        return topic;
 	    }
+//	    @GetMapping("/crawl")
+//	    public String crawlReviews() {
+//	        cochraneCrawlerService.ReadReviewsurl();
+//	        return "Crawling started. Check the log for updates.";
+//	    }
 	}
