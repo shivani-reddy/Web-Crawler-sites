@@ -21,7 +21,6 @@ const [topicChanged, setTopicChanged] = useState("");
     <div className="App">
       <div className="Head">
         <h1>Cochrane Reviews </h1>
-        {/* <SearchBox onSearch={handleSearch} /> */}
         <SearchBox searchedTopic={topicHandler} />
       </div>
       <ReviewList selectedTopic={topicChanged} />

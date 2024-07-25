@@ -1,8 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-// import ReviewItem from "./Reviewitem";
-// import axios from "axios";
 import { FixedSizeList as List } from "react-window";
-//import { VariableSizeList as List } from "react-window";
 import "../App.css";
 
 function ReviewList({ selectedTopic }) {
@@ -48,37 +45,7 @@ function ReviewList({ selectedTopic }) {
       .catch((error) => console.error("Error fetching data:", error));
   }, [selectedTopic]);
 
-  //   useEffect(() => {
-  //     const options = {
-  //       root: null,
-  //       rootMargin: "0px",
-  //       threshold: 0.1,
-  //     };
-
-  //     const observer = new IntersectionObserver(handleObserver, options);
-
-  //     if (loader.current) {
-  //       observer.observe(loader.current);
-  //     }
-
-  //     return () => {
-  //       if (loader.current) {
-  //         observer.unobserve(loader.current);
-  //       }
-  //     };
-  //   }, [loader]);
-
-  //   const handleObserver = (entities) => {
-  //     const target = entities[0];
-  //     if (target.isIntersecting) {
-  //       loadMoreData();
-  //     }
-  //   };
-
-  //   const loadMoreData = () => {
-  //     const endIndex = Math.min(currentIndex + batchSize, data.length);
-  //     setCurrentIndex(endIndex);
-  //   };
+  
 
   const loadMoreData = () => {
     if (currentIndex < data.length) {
@@ -102,28 +69,10 @@ function ReviewList({ selectedTopic }) {
     );
   };
 
-  // const rowHeights = new Array(1000)
-  //   .fill(true)
-  //   .map(() => 25 + Math.round(Math.random() * 50));
-
-  // const getItemSize = (index) => rowHeights[index];
-
+  
   return (
     <div className="App">
-      {/* {data.slice(0, currentIndex).map((item, index) => (
-          //   <div key={index} className="row">
-          //     {JSON.stringify(item)}
-          //     </div>
-          <div className="review-item">
-            <a href={item.url} target="_blank" rel="noopener noreferrer">
-              {item.title}
-            </a>
-            <p>Topic:{item.topic}</p>
-            <p>Author:{item.author}</p>
-            <p>Index:{index}</p>
-            <p style={{ color: "#962d91" }}>Date: {item.date}</p>
-          </div>
-        ))} */}
+      {}
       <List
         className="List"
         height={800}
@@ -148,12 +97,5 @@ function ReviewList({ selectedTopic }) {
   );
 }
 
-//   return (
-//     <div className="review-list">
-//       {reviews.map((review, index) => (
-//         <ReviewItem key={index} review={review} />
-//       ))}
-//     </div>
-//   );
-// };
+
 export default ReviewList;

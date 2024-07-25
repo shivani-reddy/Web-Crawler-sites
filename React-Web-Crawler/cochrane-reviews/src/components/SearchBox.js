@@ -57,10 +57,7 @@ const SearchBox = ({ searchedTopic }) => {
 
 
     const handleSuggestionClick = (suggestion) => {
-      console.log("Suggestion clicked:", suggestion); //suggestion print
       searchedTopic(suggestion);
-      //setSelectedTopic(suggestion);
-      console.log("searchedTopic:", searchedTopic); //suggestion print
       setQuery(suggestion);
       setSuggestions([]);
       setShowSuggestions(false);
